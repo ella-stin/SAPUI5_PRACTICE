@@ -39,21 +39,27 @@ sap.ui.define([
                 
                 oTablePanel.setExpanded(true);
                 // oTablePanel.setExpanded(false);
-                // let oExpanded = oTablePanel.getExpanded();
-                // // alert(oExpanded);
-
-                // oTablePanel.setExpanded(!oExpanded);
-
                 let oExpanded = oTablePanel.getExpanded();
+                // alert(oExpanded);
                 if(oExpanded) {
-                //    let oPanel = new sap.m.Panel(); 
-
-                    oTablePanel.attachExpand(
-                        function(){
-                        oTablePanel.setExpanded(false);
-                    });
-                    
+                    oTablePanel.setExpanded(false);
+                    // break;
+                } else {
+                    oTablePanel.setExpanded(true);
                 }
+
+                
+
+                // let oExpanded = oTablePanel.getExpanded();
+                // if(oExpanded) {
+                // //    let oPanel = new sap.m.Panel(); 
+
+                //     oTablePanel.attachExpand(
+                //         function(){
+                //         oTablePanel.setExpanded(false);
+                //     });
+                    
+                // }
             },
             onSelect:function(oEvent) {
                 let sPath = oEvent.getParameter("selectedItem").getBindingContext().getPath();
