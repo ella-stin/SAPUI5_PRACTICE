@@ -1,0 +1,96 @@
+<mvc:View
+    controllerName="iitp.zday1304.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content> 
+                        <ComboBox id="idCombo" items="{/data}" selectionChange="onSelect" placeholder="Click the Airlines" width="100%">
+                            <items>
+                                <core:Item key="{carrier/carrId}" text="{carrier/carrName}"></core:Item>
+                            </items>
+                        </ComboBox>
+                        <Table items="{/data}" headerText="Airlines">
+                            <columns>
+                                <Column ><header><Text text="ID"></Text></header></Column>
+                                <Column ><header><Text text="Airline Name"></Text></header></Column>
+                                <Column ><header><Text text="Currency"></Text></header></Column>
+                                <Column ><header><Text text="Url"></Text></header></Column>
+                            </columns>
+                            
+                            <items>
+                                <ColumnListItem press="onPressAir" type="Active">
+                                    <cells>
+                                        <Text text="{carrier/carrId}"></Text>
+                                        <Text text="{carrier/carrName}"></Text>
+                                        <Text text="{carrier/currCode}"></Text>
+                                        <Text text="{carrier/url}"></Text>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <Table id="idTableCon" items="{connections}" headerText="Connection ID">
+                            <columns>
+                                <Column ><header><Text text="Connection ID"></Text></header></Column>
+                                <Column ><header><Text text="City from"></Text></header></Column>
+                                <Column ><header><Text text="City to"></Text></header></Column>
+                            </columns>
+                            
+                            <items>
+                                <ColumnListItem press="onPressCon" type="Active">
+                                    <cells>
+                                        <Text text="{connId}"></Text>
+                                        <Text text="{cityFrom}"></Text>
+                                        <Text text="{cityTo}"></Text>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <Panel id="idPanel" headerText="Details" expandable="true" expanded="false">
+                        <!-- {oModel2>/expanded} -->
+                        <!-- <Table id="idPanel"  >
+                            <columns>
+                                <Column ><header><Text text="Connection ID"></Text></header></Column>
+                                <Column ><header><Text text="City from"></Text></header></Column>
+                                <Column ><header><Text text="City to"></Text></header></Column>
+                            </columns>
+                            
+                            <items>
+                                <ColumnListItem >
+                                    <cells>
+                                        <Text text="{connId}"></Text>
+                                        <Text text="{cityFrom}"></Text>
+                                        <Text text="{cityTo}"></Text>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table> -->
+                            <!-- <List >
+                                <items>
+                                    <StandardListItem title=""></StandardListItem>
+                                </items>
+                            </List> -->
+                        <f:SimpleForm >
+                            <f:content>
+                                <Label text="Connection ID"></Label>
+                                <Text text="{connId}"></Text>
+                                <Label text="City from"></Label>
+                                <Text text="{cityFrom}"></Text>
+                                <Label text="City to"></Label>
+                                <Text text="{cityTo}"></Text>
+                            </f:content>
+                        </f:SimpleForm>
+                        </Panel>
+
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
