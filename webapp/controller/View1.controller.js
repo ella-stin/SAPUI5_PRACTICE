@@ -37,19 +37,21 @@ sap.ui.define([
                 // let sPathExpandable = oEvt.getSource().getBindingContext().getPath();
                 // oTablePanel.bindElement( sPathExpandable );
                 
-                // oTablePanel.setExpanded(true);
+                oTablePanel.setExpanded(true);
                 // oTablePanel.setExpanded(false);
                 // let oExpanded = oTablePanel.getExpanded();
                 // // alert(oExpanded);
 
                 // oTablePanel.setExpanded(!oExpanded);
-                // if(oExpanded) {
-                //     // let oPanel = new sap.m.Panel(); 
 
-                //     oTablePanel.attachExpand(
-                //         function(){
-                //         oTablePanel.setExpanded(false);
-                //     });
+                let oExpanded = oTablePanel.getExpanded();
+                if(oExpanded) {
+                //    let oPanel = new sap.m.Panel(); 
+
+                    oTablePanel.attachExpand(
+                        function(){
+                        oTablePanel.setExpanded(false);
+                    });
                     
                 }
             },
