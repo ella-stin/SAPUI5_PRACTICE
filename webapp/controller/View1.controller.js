@@ -14,12 +14,12 @@ sap.ui.define([
                 oModel.loadData("../model/data.json");
                 this.getView().setModel( oModel );
                
-                let oData = {
-                    "expanded" : true
-                };
-                let oModel2 = new JSONModel();
-                oModel2.setData( oData );
-                this.getView().setModel( oModel2 , "oModel2" );
+                // let oData = {
+                //     "expanded" : true
+                // };
+                // let oModel2 = new JSONModel();
+                // oModel2.setData( oData );
+                // this.getView().setModel( oModel2 , "oModel2" );
 			},
             onPressAir:function (oEvt) {
                 let sPath = oEvt.getSource().getBindingContext().getPath();
@@ -29,37 +29,19 @@ sap.ui.define([
                 // alert( sPath );
             },
             onPressCon:function (oEvt){
-                let sPath = oEvt.getSource().getBindingContext().getPath();
                 let oTablePanel = this.byId("idPanel");
-                oTablePanel.bindElement( sPath );
-                // alert( sPath );
+                let oExpanded = oTablePanel.getExpanded();
+                if (!oExpanded) {
+                    let sPath = oEvt.getSource().getBindingContext().getPath();
+                    oTablePanel.bindElement( sPath );
+                    oTablePanel.setExpanded(true);
+                } else {
+                    oTablePanel.setExpanded(false);
+                }
 
                 // let sPathExpandable = oEvt.getSource().getBindingContext().getPath();
                 // oTablePanel.bindElement( sPathExpandable );
-                
-                oTablePanel.setExpanded(true);
-                // oTablePanel.setExpanded(false);
-                let oExpanded = oTablePanel.getExpanded();
-                // alert(oExpanded);
-                if(oExpanded) {
-                    oTablePanel.setExpanded(false);
-                    // break;
-                } else {
-                    oTablePanel.setExpanded(true);
-                }
-
-                
-
-                // let oExpanded = oTablePanel.getExpanded();
-                // if(oExpanded) {
-                // //    let oPanel = new sap.m.Panel(); 
-
-                //     oTablePanel.attachExpand(
-                //         function(){
-                //         oTablePanel.setExpanded(false);
-                //     });
-                    
-                // }
+                                    
             },
             onSelect:function(oEvent) {
                 let sPath = oEvent.getParameter("selectedItem").getBindingContext().getPath();
